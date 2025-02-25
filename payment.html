@@ -12,30 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
-    <script>
-        // Utility function to get a query parameter by name
-        function getQueryParameter(param) {
-            var urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var priceParam = getQueryParameter("price");
-            if (priceParam) {
-                // Optional: Normalize the price (for example, change comma to dot for parsing)
-                var normalizedPrice = priceParam.replace(',', '.');
-                var numericPrice = parseFloat(normalizedPrice);
-                if (!isNaN(numericPrice)) {
-                    // Update the basePrice variable if needed for further calculations (like BTC conversion)
-                    basePrice = numericPrice;
-                    // Update the displayed total price
-                    document.getElementById("total-price").textContent = "R$ " + priceParam;
-                    // Optionally, call updateBitcoinPrice() to recalc BTC based on the new price
-                    updateBitcoinPrice();
-                }
-            }
-        });
-    </script>
 </head>
 
 <body>
@@ -202,6 +178,30 @@
         generateQRCode();
         // Add event listener to the copy button
         document.getElementById('copy-btn').addEventListener('click', copyAddress);
+
+         // Utility function to get a query parameter by name
+         function getQueryParameter(param) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var priceParam = getQueryParameter("price");
+            if (priceParam) {
+                // Optional: Normalize the price (for example, change comma to dot for parsing)
+                var normalizedPrice = priceParam.replace(',', '.');
+                var numericPrice = parseFloat(normalizedPrice);
+                if (!isNaN(numericPrice)) {
+                    // Update the basePrice variable if needed for further calculations (like BTC conversion)
+                    basePrice = numericPrice;
+                    // Update the displayed total price
+                    document.getElementById("total-price").textContent = "R$ " + priceParam;
+                    // Optionally, call updateBitcoinPrice() to recalc BTC based on the new price
+                    updateBitcoinPrice();
+                }
+            }
+            setTimeout(generateQRCode, 100);
+        });
     </script>
 </body>
 
