@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Seguro com Bitcoin | Paraguai Armas</title>
+    <link rel="icon" type="image/svg+xml" href="img/logomobile.svg">
+    <link rel="stylesheet" href="paymentform.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <script>
+        // Utility function to get a query parameter by name
+        function getQueryParameter(param) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var priceParam = getQueryParameter("price");
+            if (priceParam) {
+                // Optional: Normalize the price (for example, change comma to dot for parsing)
+                var normalizedPrice = priceParam.replace(',', '.');
+                var numericPrice = parseFloat(normalizedPrice);
+                if (!isNaN(numericPrice)) {
+                    // Update the basePrice variable if needed for further calculations (like BTC conversion)
+                    basePrice = numericPrice;
+                    // Update the displayed total price
+                    document.getElementById("total-price").textContent = "R$ " + priceParam;
+                    // Optionally, call updateBitcoinPrice() to recalc BTC based on the new price
+                    updateBitcoinPrice();
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <header class="nav-header">
+        <nav class="nav-container">
+            <a href="armamento.html" style="display: contents">
+                <img src="img/logoone.png" alt="Logotwo" class="logo-web">
+            </a>
+            </a href="armamento.html" style="display: contents">
+            <img src="img/logomobile.svg" alt="Logo" class="logo-mobile">
+            </a>
+            <a href="armamento.html" class="nav-link">Armas</a>
+            <a href="munições.html" class="nav-link">Munições</a>
+            <a href="carregadores.html" class="nav-link">Carregadores</a>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="payment-container">
+                <h1 class="product-title">Pagamento com Bitcoin</h1>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span>Total:</span>
+                        <span class="total-price" id="total-price">R$ 780,20</span>
+                    </div>
+                    <div class="price-box">
+                        <span>BTC:</span>
+                        <span class="bitcoin-price" id="bitcoin-price">...</span>
+                    </div>
+                </div>
+
+                <p style="text-align: center; font-size: 1.1rem; color: #666;">
+                    Não sabe como adquirir bitcoin?
+                    <a href="https://www.coinbase.com/pt-br/how-to-buy/bitcoin" target="_blank"
+                        style="color: #007aff; text-decoration: underline; font-weight: bold;">
+                        Clique aqui
+                    </a>.
+                </p>
+                <p style="text-align: center; font-size: 1.1rem; color: #666;">
+                    Envie o pagamento no valor determinado para o endereço abaixo:
+                    <div class="bitcoin-address">
+                        <div class="address-input-group">
+                            <input type="text" id="btc-address" value="bc1qzajyel79gmjsj0r4pjvzrm448uqm73u2aaxp9q"
+                                readonly>
+                            <button class="copy-btn" id="copy-btn" aria-label="Copiar endereço">
+                                <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copiar</span>
+                            </button>
+                            <div class="copy-notification" id="copy-notification">Endereço copiado</div>
+                        </div>
+                    </div>
+                    <p style="text-align: center; font-size: 1.1rem; color: #666;">
+                        Ou pague utilizando o QR Code abaixo:
+                    </p>
+                    <div class="qr-code" id="qrcode"></div>
+
+                    <div class="button-container">
+                        <a href="#" class="read-more" onclick="window.history.back()">Voltar</a>
+                        <a href="#" class="btn" onclick="startPaymentVerification()">Confirmar Pagamento</a>
+
+                    </div>
+
+
+
+            </div>
+            <!-- TELA DE CARREGAMENTO -->
+            <div id="loading-screen" style="display: none; text-align: center;">
+                <h2 style="color: #333;">Aguardando confirmação do pagamento...</h2>
+                <div class="loading-dots">
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                </div>
+                <br>
+                <button onclick="showPaymentScreen()" class="read-more">Voltar</button>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        © 2025 Paraguai Armas. Todos os direitos reservados.
+    </footer>
+    <script>
+        let basePrice = 780.20;
+        const bitcoinApiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=brl';
+
+        async function checkAndUpdateBitcoinPrice() {
+            const storedDate = localStorage.getItem('btcPriceDate');
+            const today = new Date().toISOString().split('T')[0];
+            if (storedDate === today) {
+                const cachedPrice = parseFloat(localStorage.getItem('btcPrice'));
+                if (!isNaN(cachedPrice)) return cachedPrice;
+            }
+            try {
+                const response = await fetch(bitcoinApiUrl);
+                const data = await response.json();
+                const btcPriceInBRL = data.bitcoin.brl;
+                localStorage.setItem('btcPrice', btcPriceInBRL);
+                localStorage.setItem('btcPriceDate', today);
+                return btcPriceInBRL;
+            } catch (error) {
+                console.error('Erro ao obter o preço do Bitcoin:', error);
+                document.getElementById('bitcoin-price').textContent = 'Bitcoin não calculado';
+                return null;
+            }
+        }
+
+        async function updateBitcoinPrice() {
+            const btcPriceInBRL = await checkAndUpdateBitcoinPrice();
+            if (btcPriceInBRL) {
+                const priceInBTC = basePrice / btcPriceInBRL;
+                document.getElementById('bitcoin-price').textContent = `₿ ${priceInBTC.toFixed(8)}`;
+            }
+        }
+        updateBitcoinPrice();
+
+        function copyAddress() {
+            const addressInput = document.getElementById('btc-address');
+            const notification = document.getElementById('copy-notification');
+
+
+            navigator.clipboard.writeText(addressInput.value).then(() => {
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 1300);
+            }).catch(err => {
+                console.error('Falha ao copiar:', err);
+            });
+        }
+
+        function generateQRCode() {
+            const address = document.getElementById("btc-address").value;
+            const qrCodeContainer = document.getElementById("qrcode");
+
+            // Remove qualquer QR Code anterior para evitar sobreposição
+            qrCodeContainer.innerHTML = "";
+
+            // Gerar o QR Code
+            new QRCode(qrCodeContainer, {
+                text: address,
+                width: 180,
+                height: 180
+            });
+        }
+
+        function startPaymentVerification() {
+            document.querySelector(".payment-container").style.display = "none";
+            document.getElementById("loading-screen").style.display = "block";
+        }
+
+        function showPaymentScreen() {
+            document.querySelector(".payment-container").style.display = "block";
+            document.getElementById("loading-screen").style.display = "none";
+        }
+
+
+        // Chamar a função ao carregar a página
+        generateQRCode();
+        // Add event listener to the copy button
+        document.getElementById('copy-btn').addEventListener('click', copyAddress);
+    </script>
+</body>
+
+</html>

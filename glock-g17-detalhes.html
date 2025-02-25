@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistola Glock G17 | Paraguai Armas</title>
+    <link rel="icon" type="image/svg+xml" href="img/logomobile.svg">
+    <link rel="stylesheet" href="details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="nav-header">
+        <nav class="nav-container">
+            <a href="armamento.html" style="display: contents">
+                <img src="img/logoone.png" alt="Logotwo" class="logo-web">
+            </a>
+            </a href="armamento.html" style="display: contents">
+            <img src="img/logomobile.svg" alt="Logo" class="logo-mobile">
+            </a>
+            <a href="armamento.html" class="nav-link">Armas</a>
+            <a href="munições.html" class="nav-link">Munições</a>
+            <a href="carregadores.html" class="nav-link">Carregadores</a>
+        </nav>
+    </header>
+
+    <div class="overlay"></div>
+
+    <main>
+        <div class="container">
+            <div class="product-container">
+
+                <div class="product-image-container">
+                    <img class="product-image"
+                        src="img/glockg17.png"
+                        alt="Pistola Glock G17 Gen.5 Calibre 9mm">
+
+                    <div class="product-notices">
+                        <div class="notice-section">
+                            <div class="warning-box">
+                                <div class="warning-title">⚠️ Avisos Importantes</div>
+                                <ul class="details-list">
+                                    <li>🪙 Só aceitamos pagamento via Bitcoin por motivos de segurança</li>
+                                    <li>❓ Não sabe adquirir bitcoin? <a
+                                            href="https://www.coinbase.com/pt-br/how-to-buy/bitcoin" target="_blank"
+                                            style="color: #007aff; text-decoration: underline; font-weight: bold;">
+                                            Clique aqui
+                                        </a>
+                                    </li>
+                                    <li>🚚 Entrega discreta em 1-2 semanas PAC ou SEDEX, armamementos maiores são
+                                        enviados desmontados e em mais de uma remessa</li>
+                                    <li>Não pedimos por nenhum dado pessoal em excessão do endereço de entrega</li>
+                                    <li>1️⃣ O armamento já acompanha 17 projéteis + carregador de cortesia</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <h1 class="product-title">Pistola Glock G17 Gen.5 Calibre 9mm</h1>
+                    <div class="price-container">
+                        <div class="price-box">
+                            <span>Total:</span>
+                            <span class="total-price" id="total-price"></span>
+                        </div>
+                        <div class="price-box">
+                            <span>BTC:</span>
+                            <span class="bitcoin-price" id="bitcoin-price">...</span>
+                        </div>
+                    </div>
+                    <div class="additional-items">
+                        <h3>Itens Adicionais</h3>
+                        <div class="additional-item">
+                            <span class="item-name">Munição 9mm Luger FMJ Black Mamba (25 unidades) - R$ 230</span>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity('mag', -1)">-</button>
+                                <input type="number" id="mag-quantity" class="quantity-input" value="0" min="0"
+                                    max="20">
+                                <button class="quantity-btn" onclick="updateQuantity('mag', 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <a onclick="window.history.back()" class="read-more">Voltar</a>
+                        <input type="submit" class="btn" value="Comprar Agora">
+                    </div>
+                    <p class="product-description">
+                        Desenhada para profissionais, a GLOCK 17 tem a confiança de forças de segurança e militares ao
+                        redor do mundo devido a sua insuperável confiabilidade, capacidade padrão do carregador para 17
+                        munições e seu pouco peso. Seu sistema com a assinatura “Safe Action” torna a pistola GLOCK 17
+                        9mm Luger segura, fácil e rápida, o que você precisa em situações críticas.
+                    </p>
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Calibre</span>
+                            <span>9mm Luger</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Capacidade</span>
+                            <span>17+1 tiros</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Comprimento Total</span>
+                            <span>20.2 cm</span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="shipping-form-container" style="display: none;">
+                <div class="product-container">
+                    <div class="form-wrapper">
+                        <div class="p-6 bg-white rounded-lg w-full max-w-2xl mx-auto">
+                            <div class="form-header">
+                                <h2>Endereço de Entrega</h2>
+                                <button onclick="toggleView('product')" class="close-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div id="shippingForm" onsubmit="handleShippingSubmit(event)" class="shipping-form">
+                                <div class="shipping-details">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>CEP</label>
+                                            <input type="text" name="cep" placeholder="00000-000" required
+                                                oninput="this.value = this.value.replace(/\D/g, '').replace(/(\d{5})(\d)/, '$1-$2').slice(0, 9)">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Número</label>
+                                            <input type="text" name="number" placeholder="123" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Rua</label>
+                                        <input type="text" name="street" placeholder="Nome da rua" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Complemento</label>
+                                        <input type="text" name="complement"
+                                            placeholder="Apartamento, bloco, etc. (opcional)">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Bairro</label>
+                                        <input type="text" name="neighborhood" placeholder="Nome do bairro" required>
+                                    </div>
+
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label>Cidade</label>
+                                            <input type="text" name="city" placeholder="Nome da cidade" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Estado</label>
+                                            <select name="state" required>
+                                                <option value="">Selecione o estado</option>
+                                                <option value="AC">AC</option>
+                                                <option value="AL">AL</option>
+                                                <option value="AP">AP</option>
+                                                <option value="AM">AM</option>
+                                                <option value="BA">BA</option>
+                                                <option value="CE">CE</option>
+                                                <option value="DF">DF</option>
+                                                <option value="ES">ES</option>
+                                                <option value="GO">GO</option>
+                                                <option value="MA">MA</option>
+                                                <option value="MT">MT</option>
+                                                <option value="MS">MS</option>
+                                                <option value="MG">MG</option>
+                                                <option value="PA">PA</option>
+                                                <option value="PB">PB</option>
+                                                <option value="PR">PR</option>
+                                                <option value="PE">PE</option>
+                                                <option value="PI">PI</option>
+                                                <option value="RJ">RJ</option>
+                                                <option value="RN">RN</option>
+                                                <option value="RS">RS</option>
+                                                <option value="RO">RO</option>
+                                                <option value="RR">RR</option>
+                                                <option value="SC">SC</option>
+                                                <option value="SP">SP</option>
+                                                <option value="SE">SE</option>
+                                                <option value="TO">TO</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="shipping-sidebar">
+
+                                    <div class="price-summary">
+                                        <div class="price-container">
+                                            <div class="price-box">
+                                                <span class="priceship-text">Total:</span>
+                                                <span class="total-price-ship" id="total-price-shipping">R$
+                                                    780,20</span>
+                                            </div>
+                                            <div class="price-box">
+                                                <span>BTC:</span>
+                                                <span class="bitcoin-price" id="bitcoin-price-shipping">...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="button-container">
+                                        <button type="button" class="read-more"
+                                            onclick="toggleView('product')">Voltar</button>
+                                        <button type="submit" class="btncomp">Comprar agora</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </main>
+
+    <footer>
+        © 2025 Paraguai Armas. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        // Price variable
+        let basePrice = 1790.10;
+        const additionalItemPrice = 230;
+        const bitcoinApiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=brl';
+
+        // Get elements
+        const image = document.querySelector('.product-image');
+        const overlay = document.querySelector('.overlay');
+
+        // Simple zoom functionality
+        image.addEventListener('click', function () {
+            // Create zoomed preview
+            const zoomedPreview = document.createElement('img');
+            zoomedPreview.src = this.src;
+            zoomedPreview.style.position = 'fixed';
+            zoomedPreview.style.top = '50%';
+            zoomedPreview.style.left = '50%';
+            zoomedPreview.style.transform = 'translate(-50%, -50%)';
+            zoomedPreview.style.maxWidth = '90vw';
+            zoomedPreview.style.maxHeight = '90vh';
+            zoomedPreview.style.zIndex = '1001';
+            zoomedPreview.style.cursor = 'zoom-out';
+            zoomedPreview.classList.add('zoomed-preview');
+
+            // Show overlay with fade
+            overlay.style.display = 'block';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+
+            // Add to document
+            document.body.appendChild(zoomedPreview);
+
+            // Simple drag functionality for mobile
+            let startX, startY, moveX = 0,
+                moveY = 0;
+
+            // Handle touch start
+            zoomedPreview.addEventListener('touchstart', function (e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            });
+
+            // Handle touch move
+            zoomedPreview.addEventListener('touchmove', function (e) {
+                const touchX = e.touches[0].clientX;
+                const touchY = e.touches[0].clientY;
+
+                moveX += touchX - startX;
+                moveY += touchY - startY;
+
+                this.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+
+                startX = touchX;
+                startY = touchY;
+            });
+
+            // Close on click
+            zoomedPreview.addEventListener('click', function () {
+                this.remove();
+                overlay.style.display = 'none';
+            });
+        });
+
+        // Close on overlay click
+        overlay.addEventListener('click', function () {
+            const zoomedPreview = document.querySelector('.zoomed-preview');
+            if (zoomedPreview) {
+                zoomedPreview.remove();
+            }
+            this.style.display = 'none';
+        });
+
+        function getTodayDateString() {
+            const today = new Date();
+            return today.toISOString().split('T')[0];
+        }
+
+        async function checkAndUpdateBitcoinPrice() {
+            const storedDate = localStorage.getItem('btcPriceDate');
+            const today = getTodayDateString();
+
+            if (storedDate === today) {
+                const cachedPrice = parseFloat(localStorage.getItem('btcPrice'));
+                if (!isNaN(cachedPrice)) {
+                    return cachedPrice;
+                }
+            }
+
+            try {
+                const response = await fetch(bitcoinApiUrl);
+                const data = await response.json();
+                const btcPriceInBRL = data.bitcoin.brl;
+                localStorage.setItem('btcPrice', btcPriceInBRL);
+                localStorage.setItem('btcPriceDate', today);
+                return btcPriceInBRL;
+            } catch (error) {
+                console.error('Error loading BTC price:', error);
+                document.getElementById('bitcoin-price').textContent = 'Bitcoin não calculado';
+                return null;
+            }
+        }
+
+        function updateQuantity(type, change) {
+            const input = document.getElementById(`${type}-quantity`);
+            let value = parseInt(input.value) + change;
+            value = Math.max(0, Math.min(20, value));
+            input.value = value;
+            updateTotalPrice();
+        }
+
+        async function updateTotalPrice() {
+            const quantity = parseInt(document.getElementById('mag-quantity').value) || 0;
+            const totalPrice = basePrice + (quantity * additionalItemPrice);
+            document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+
+            const btcPriceInBRL = await checkAndUpdateBitcoinPrice();
+            if (btcPriceInBRL) {
+                const priceInBTC = totalPrice / btcPriceInBRL;
+                document.getElementById('bitcoin-price').textContent = `₿ ${priceInBTC.toFixed(8)}`;
+            }
+        }
+
+        const magQuantityInput = document.getElementById('mag-quantity');
+        magQuantityInput.addEventListener('input', function () {
+            let value = parseInt(magQuantityInput.value);
+            if (isNaN(value) || value < 0) value = 0;
+            if (value > 20) value = 20;
+            magQuantityInput.value = value;
+            updateTotalPrice();
+        });
+
+        updateTotalPrice();
+
+        function toggleView(view) {
+            const productContainer = document.querySelector('.product-container');
+            const shippingContainer = document.querySelector('.shipping-form-container');
+
+            if (view === 'shipping') {
+                productContainer.classList.add('fade-out');
+                setTimeout(() => {
+                    productContainer.style.display = 'none';
+                    shippingContainer.style.display = 'block';
+                    shippingContainer.offsetHeight;
+                    shippingContainer.classList.remove('fade-out');
+                    shippingContainer.classList.add('fade-in');
+
+                    document.getElementById('total-price-shipping').textContent =
+                        document.getElementById('total-price').textContent;
+                    document.getElementById('bitcoin-price-shipping').textContent =
+                        document.getElementById('bitcoin-price').textContent;
+                }, 300);
+            } else {
+                shippingContainer.classList.add('fade-out');
+                setTimeout(() => {
+                    shippingContainer.style.display = 'none';
+                    productContainer.style.display = 'grid';
+                    productContainer.offsetHeight;
+                    productContainer.classList.remove('fade-out');
+                    productContainer.classList.add('fade-in');
+                }, 300);
+            }
+        }
+
+        const updateTotalPriceOriginal = updateTotalPrice;
+        updateTotalPrice = async function () {
+            await updateTotalPriceOriginal();
+            if (document.querySelector('.shipping-form-container').style.display !== 'none') {
+                document.getElementById('total-price-shipping').textContent =
+                    document.getElementById('total-price').textContent;
+                document.getElementById('bitcoin-price-shipping').textContent =
+                    document.getElementById('bitcoin-price').textContent;
+            }
+        }
+
+
+
+        function handleShippingSubmit(event) {
+            event.preventDefault();
+            alert('Prosseguindo para pagamento...');
+        }
+
+        document.querySelector('.btn[value="Comprar Agora"]').addEventListener('click', function () {
+            toggleView('shipping');
+        });
+
+        document.querySelector('.btncomp').addEventListener('click', function (e) {
+            e.preventDefault();
+            // Get the price text from the element (e.g., "R$ 780,20")
+            var priceText = document.getElementById('total-price').textContent;
+            // Optionally, remove the "R$" symbol and trim extra spaces
+            var priceNumber = priceText.replace('R$', '').trim();
+            // Redirect to payment.html with the price as a query parameter
+            window.location.href = 'payment.html?price=' + encodeURIComponent(priceNumber);
+        });
+    </script>
+</body>
+
+</html>

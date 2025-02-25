@@ -1,0 +1,372 @@
+html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: "Figtree", sans-serif;
+            background: linear-gradient(135deg, #f9f9f9, #f2f2f2);
+            color: #333;
+        }
+
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+
+        .nav-header {
+            background: rgba(0, 5, 73, 0.85);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-mobile {
+            display: none;
+        }
+
+        .logo-web {
+            display: block;
+            width: 350px;
+            height: auto;
+            position: absolute;
+            left: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 45%;
+            padding: 0 15px;
+        }
+
+        .payment-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.07);
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #222;
+            text-align: center;
+            margin: 0 0 20px;
+        }
+
+        .price-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .price-box {
+            padding: 10px 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1.2rem;
+        }
+
+        .total-price {
+            font-weight: 700;
+            color: #111;
+        }
+
+        .bitcoin-price {
+            font-size: 1.6rem;
+            color: #f7931a;
+            font-weight: 700;
+        }
+
+        .bitcoin-address {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .bitcoin-address {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .qr-code {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            width: fit-content;
+        }
+
+
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn,
+        .read-more {
+            padding: 12px 24px;
+            border-radius: 30px;
+            background-color: #007aff;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .read-more {
+            background-color: white;
+            color: #007aff;
+            border: 2px solid #007aff;
+        }
+
+        .btn:hover,
+        .read-more:hover {
+            background-color: #005bb5;
+            color: white;
+        }
+
+        footer {
+            background-color: #121212;
+            color: #cacaca;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e0e0;
+            margin-top: auto;
+        }
+
+        .address-input-group {
+            display: flex;
+            width: 100%;
+            max-width: 374px;
+            height: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+        }
+
+        .address-input-group input {
+            flex: 1;
+            border: none;
+            padding: 12px 15px;
+            font-family: "Figtree", sans-serif;
+            font-size: 0.95rem;
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: 500;
+            text-overflow: ellipsis;
+        }
+
+        .address-input-group .copy-btn {
+            min-width: 110px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #007aff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            gap: 8px;
+            padding: 0 16px;
+            font-family: "Figtree", sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .address-input-group .copy-btn:hover {
+            background-color: #0062cc;
+        }
+
+        .copy-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .copy-notification {
+            position: absolute;
+            bottom: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3aa13dd3;
+            color: white;
+            padding: 13px 24px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+            visibility: visible;
+            bottom: 400px;
+        }
+
+        .loading-dots {
+            display: inline-flex;
+            justify-content: center;
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: #007aff;
+            gap: 5px;
+            animation: blink 1.5s infinite;
+            margin-bottom: 40px;
+            margin-top: 3.5px;
+        }
+
+        .loading-dots span {
+            animation: blink 1.5s infinite;
+        }
+
+        .loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.3s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        @media (max-width: 1110px) {
+
+            .address-input-group {
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+            }
+
+            .address-input-group input {
+                flex: 1;
+                min-width: 0;
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+
+            .address-input-group .copy-btn {
+                min-width: 80px;
+                padding: 10px 12px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                height: 100%;
+            }
+
+            .nav-container {
+                justify-content: center;
+            }
+
+            .logo-mobile {
+                display: block;
+                width: 40px;
+                height: auto;
+                margin-right: auto;
+            }
+
+            .logo-web {
+                display: none;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            .nav-container {
+                flex-wrap: nowrap;
+                justify-content: space-evenly;
+                gap: 5px;
+            }
+
+            .nav-link {
+                padding: 6px 8px;
+                font-size: 1rem;
+                white-space: nowrap;
+                flex-shrink: 1;
+            }
+
+            .price-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .bitcoin-address {
+                width: 100%;
+            }
+
+        }
