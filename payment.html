@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="img/logomobile.svg">
     <link rel="stylesheet" href="paymentform.css">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <script src="qrcode.min.js"></script>
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
@@ -71,7 +71,9 @@
                     <p style="text-align: center; font-size: 1.1rem; color: #666;">
                         Ou pague utilizando o QR Code abaixo:
                     </p>
-                    <div class="qr-code" id="qrcode"></div>
+                    <div class="qr-code">
+                        <img src="img/qrcode.png" alt="Bitcoin Payment QR Code" width="180" height="180" style="max-width: 100%; height: auto;">
+                    </div>
 
                     <div class="button-container">
                         <a href="#" class="read-more" onclick="window.history.back()">Voltar</a>
@@ -148,21 +150,6 @@
             });
         }
 
-        function generateQRCode() {
-            const address = document.getElementById("btc-address").value;
-            const qrCodeContainer = document.getElementById("qrcode");
-
-            // Remove qualquer QR Code anterior para evitar sobreposição
-            qrCodeContainer.innerHTML = "";
-
-            // Gerar o QR Code
-            new QRCode(qrCodeContainer, {
-                text: address,
-                width: 180,
-                height: 180
-            });
-        }
-
         function startPaymentVerification() {
             document.querySelector(".payment-container").style.display = "none";
             document.getElementById("loading-screen").style.display = "block";
@@ -173,10 +160,6 @@
             document.getElementById("loading-screen").style.display = "none";
         }
 
-
-        // Chamar a função ao carregar a página
-        generateQRCode();
-        // Add event listener to the copy button
         document.getElementById('copy-btn').addEventListener('click', copyAddress);
 
          // Utility function to get a query parameter by name
@@ -200,7 +183,6 @@
                     updateBitcoinPrice();
                 }
             }
-            setTimeout(generateQRCode, 100);
         });
     </script>
 </body>
